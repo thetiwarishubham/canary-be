@@ -2,7 +2,7 @@
 const swaggerDefinition = {
   openapi: "3.0.0",
   info: {
-    title: "Travelopia Assignment API Documents",
+    title: "Canary Assignment API Documents",
     version: "1.0.0",
     description: "Find all API documentation here.",
   },

@@ -10,7 +10,7 @@ class GetPermission {
             const permissionProvider = new PermissionProvider();
             const result = await permissionProvider.getById(this.flightId);
             if (!result) {
-                throw new httperror(404, `Flight not exists.`);
+                throw new httperror(404, `Permission not exists.`);
             }
             return result;
         } catch (error) {

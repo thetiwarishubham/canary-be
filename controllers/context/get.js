@@ -1,7 +1,7 @@
 const { ContextProvider } = require('../../providers/context');
 const httperror = require('http-errors');
 
-class GetFlight {
+class GetContext {
     constructor(flightId) {
         this.flightId = flightId;
     }
@@ -19,4 +19,4 @@ class GetFlight {
     }
 }
 
-exports.GetFlight = GetFlight;
+exports.GetContext = GetContext;

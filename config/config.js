@@ -6,11 +6,13 @@ const config = {
         useCreateIndex: true,
         useFindAndModify: false,
     },
-    mongoDBUri: process.env.MONGO_URL || 'mongodb://127.0.0.1:27017/travelopia-be-assignment',
+    mongoDBUri: process.env.MONGO_URL || 'mongodb://127.0.0.1:27017/canary-be',
 
     PORT: process.env.PORT || 4000,
 
     JWT_SECRET: process.env.JWT_SECRET,
+
+    OPENAI_API_KEY: process.env.OPENAI_API_KEY,
 }
 
 module.exports = config

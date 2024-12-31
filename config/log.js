@@ -1,7 +1,7 @@
 const winston = require('winston');
 require('winston-daily-rotate-file');
 var transport = new winston.transports.DailyRotateFile({
-    filename: '/mnt/logs/channlworks-assignment-%DATE%.log',
+    filename: '/mnt/logs/canary-be-%DATE%.log',
     datePattern: 'YYYY-MM-DD',
     zippedArchive: false,
     maxSize: '50m',
@@ -13,7 +13,7 @@ transport.on('rotate', function(oldFilename, newFilename) {
 const logger = winston.createLogger({
     level: 'info',
     format: winston.format.json(),
-    defaultMeta: { service: 'travelopia-be-assignment-log-service' },
+    defaultMeta: { service: 'canary-be-log-service' },
     transports: [
         transport
     ],

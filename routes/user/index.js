@@ -10,8 +10,8 @@ const { UpdateUser } = require('../../controllers/user/update');
 const { DeleteUser } = require('../../controllers/user/delete');
 
 router.route('/:id').get(function (req, res, next) {
-	const flightId = req.params.id;
-	const controller = new GetUser(flightId);
+	const userId = req.params.id;
+	const controller = new GetUser(userId);
 	ControllerManager.execute(controller)
 		.then(data => {
 			const response = {
@@ -63,9 +63,9 @@ router.route('/').post(function (req, res, next) {
 });
 
 router.route('/:id').patch(function (req, res, next) {
-	const flightId = req.params.id;
+	const userId = req.params.id;
 	const updateObj = req.body;
-	const controller = new UpdateUser(flightId, updateObj);
+	const controller = new UpdateUser(userId, updateObj);
 	ControllerManager.execute(controller)
 		.then(data => {
 			const response = {
@@ -82,8 +82,8 @@ router.route('/:id').patch(function (req, res, next) {
 });
 
 router.route('/:id').delete(function (req, res, next) {
-	const flightId = req.params.id;
-	const controller = new DeleteUser(flightId);
+	const userId = req.params.id;
+	const controller = new DeleteUser(userId);
 	ControllerManager.execute(controller)
 		.then(data => {
 			const response = {

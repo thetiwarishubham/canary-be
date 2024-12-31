@@ -22,6 +22,7 @@
 		"moment": "^2.29.1",
 		"mongoose": "^8.9.2",
 		"morgan": "^1.10.0",
+		"openai": "^4.77.0",
 		"querystring": "^0.2.0",
 		"simple-node-logger": "^18.12.24",
 		"swagger-jsdoc": "^6.1.0",

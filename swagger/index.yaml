@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
-  title: E-commerce Backend API
-  description: API documentation for the e-commerce backend system
+  title: Canary Backend API
+  description: API documentation for the canary backend system
   version: 1.0.0
 
 paths:

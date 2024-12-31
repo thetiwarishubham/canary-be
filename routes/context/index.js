@@ -4,10 +4,29 @@ const router = express.Router();
 const { ControllerManager } = require('../../controllers/controller-manager');
 
 const { GetAllContexts } = require('../../controllers/context/list');
+const { ListContextByName } = require('../../controllers/context/list-by-name');
 const { GetContext } = require('../../controllers/context/get');
 const { CreateContext } = require('../../controllers/context/create');
 const { UpdateContext } = require('../../controllers/context/update');
 const { DeleteContext } = require('../../controllers/context/delete');
+
+router.route('/search').get(function (req, res, next) {
+	const search = req.query.name;
+	const controller = new ListContextByName(search);
+	ControllerManager.execute(controller)
+		.then(data => {
+			const response = {
+				data: data
+			};
+			res.status(200).send(response);
+		})
+		.catch(error => {
+			const response = {
+				data: error.message
+			};
+			res.status(error.status || 400).send(response);
+		});
+});
 
 router.route('/:id').get(function (req, res, next) {
 	const flightId = req.params.id;
@@ -28,7 +47,8 @@ router.route('/:id').get(function (req, res, next) {
 });
 
 router.route('/').get(function (req, res, next) {
-	const controller = new GetAllContexts();
+	const search = req.query.search;
+	const controller = new GetAllContexts(search);
 	ControllerManager.execute(controller)
 		.then(data => {
 			const response = {

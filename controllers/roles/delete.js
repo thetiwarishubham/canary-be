@@ -8,7 +8,7 @@ class DeleteRoles {
     async execute() {
         try {
             const rolesProvider = new RolesProvider();
-            const result = await rolesProvider.delete(this.rsultId);
+            const result = await rolesProvider.delete(this.flightId);
             if (!result) {
                 throw new httperror(400, `Bad Request.`);
             }

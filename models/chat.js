@@ -1,32 +1,32 @@
-const mongoose = require('mongoose');
-const db = require('../dbConnection');
+// const mongoose = require('mongoose');
+// const db = require('../dbConnection');
 
-const chatSchema = new mongoose.Schema({
-  flightNumber: {
-    type: String,
-    required: true
-  },
-  airline: {
-    type: String,
-    required: true
-  },
-  origin: {
-    type: String,
-    required: true
-  },
-  destination: {
-    type: String,
-    required: true
-  },
-  departureTime: {
-    type: Date,
-    required: true
-  },
-  status: {
-    type: String,
-    required: true,
-    enum: ['On Time', 'Delayed', 'Departed', 'Boarding']
-  }
-});
+// const chatSchema = new mongoose.Schema({
+//   flightNumber: {
+//     type: String,
+//     required: true
+//   },
+//   airline: {
+//     type: String,
+//     required: true
+//   },
+//   origin: {
+//     type: String,
+//     required: true
+//   },
+//   destination: {
+//     type: String,
+//     required: true
+//   },
+//   departureTime: {
+//     type: Date,
+//     required: true
+//   },
+//   status: {
+//     type: String,
+//     required: true,
+//     enum: ['On Time', 'Delayed', 'Departed', 'Boarding']
+//   }
+// });
 
-module.exports = db.model('Chat', chatSchema, 'chats');;
+// module.exports = db.model('Chat', chatSchema, 'chats');;

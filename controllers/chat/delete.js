@@ -8,7 +8,7 @@ class DeleteChat {
     async execute() {
         try {
             const flightProvider = new ChatProvider();
-            const result = await chatProvider.delete(this.resultId);
+            const result = await chatProvider.delete(this.flightId);
             if (!flight) {
                 throw new httperror(400, `Bad Request.`);
             }

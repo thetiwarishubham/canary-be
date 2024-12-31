@@ -13,7 +13,7 @@ class UpdatePermission {
             if (!result) {
                 throw new httperror(400, `Bad Request.`);
             }
-            return 'Flight Updated Successfully.';
+            return 'Permission Updated Successfully.';
         } catch (error) {
             throw error;
         }

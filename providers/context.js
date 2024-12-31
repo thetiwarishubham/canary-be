@@ -5,12 +5,37 @@ class ContextProvider {
 
 	async list(filter = {}) {
 		try {
-			const result = await Context.find(filter).lean();
+			const result = await Context.find({}).lean();
 			return result;
 		} catch (error) {
 			throw error;
 		}
 	}
+
+	async listByName(filter = {}) {
+		try {
+			
+			 // Ensure filter is an object
+			 if (typeof filter !== 'object' || Array.isArray(filter)) {
+				throw new Error('The filter parameter must be an object.');
+			}
+	
+			// Apply regex search for the name field if provided
+			if (filter.name) {
+				filter.name = { $regex: filter.name, $options: 'i' }; // 'i' for case-insensitive search
+			}
+			const result = await Context.find(filter).select('name _id').lean();
+			const modifiedResult = result.map((doc) => ({
+				id: doc._id,
+				name: doc.name,
+			}));
+	
+			return modifiedResult;
+		} catch (error) {
+			throw error;
+		}
+	}
+
 
 	async getById(flightId) {
 		try {

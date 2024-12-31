@@ -1,13 +1,13 @@
 const { ContextProvider } = require('../../providers/context');
 
-class GetAllContexts {
-    constructor(search) {
-        this.search = search;
+class ListContextByName {
+    constructor(name) {
+        this.name = name;
     }
     async execute() {
         try {
             const contextProvider = new ContextProvider();
-            const result = await contextProvider.list(this.search);
+            const result = await contextProvider.listByName({name: this.name});
             return result;
         } catch (error) {
             throw error;
@@ -15,4 +15,4 @@ class GetAllContexts {
     }
 }
 
-exports.GetAllContexts = GetAllContexts;
+exports.ListContextByName = ListContextByName;

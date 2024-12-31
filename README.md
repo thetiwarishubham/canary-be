@@ -13,7 +13,7 @@ Canary Backend App -- Node.js
 ### Installation
 1. Clone the repo
 ```sh
-git clone https://github.com/thetiwarishubham/travelopia-be.git
+git clone https://github.com/thetiwarishubham/canary-be.git
 ```
 2. Install NPM packages
 ```sh
