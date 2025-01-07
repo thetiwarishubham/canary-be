@@ -3,7 +3,7 @@ const db = require('../dbConnection');
 
 const contextSchema = new mongoose.Schema({
     name: { type: String, required: true }, // Name of the item
-    type: { type: String, required: true, enum: ['GraphQL Query', 'Document'] }, // Type: GraphQL Query or Document
+    type: { type: String, required: true, enum: ['GraphQL', 'Document'] }, // Type: GraphQL Query or Document
     role: { type: String }, // Role description
     context: { type: String }, // Context description
     query: { type: String }, // GraphQL query, required for 'GraphQL Query' type

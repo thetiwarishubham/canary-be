@@ -5,7 +5,7 @@ class ContextProvider {
 
 	async list(filter = {}) {
 		try {
-			const result = await Context.find({}).lean();
+			const result = await Context.find({}).sort({ createdAt: -1 }).lean();
 			return result;
 		} catch (error) {
 			throw error;
