@@ -8,9 +8,11 @@ class CreateContext {
 
     async execute() {
         try {
-            this.createObj.query = await this.optimizeGraphQLQuery(this.createObj.query);
-            this.createObj.schema = await this.optimizeAndCompressData(this.createObj.schema);
-            this.createObj.mockApis = await this.optimizeAndCompressData(this.createObj.mockApis);
+            if (this.createObj.type === 'GraphQL') {
+                this.createObj.query = await this.optimizeGraphQLQuery(this.createObj.query);
+                this.createObj.schema = await this.optimizeAndCompressData(this.createObj.schema);
+                this.createObj.mockApis = await this.optimizeAndCompressData(this.createObj.mockApis);
+            }
             const contextProvider = new ContextProvider();
             await contextProvider.create(this.createObj);
             return 'Context Created Successfully';
@@ -39,7 +41,7 @@ class CreateContext {
             .replace(/\s?\]\s?/g, ']') // Remove spaces around closing square bracket
             .trim(); // Trim any leading/trailing spaces
     }
-    
+
 }
 
 exports.CreateContext = CreateContext;

@@ -5,6 +5,8 @@ const swaggerJSDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 const swaggerOptions = require('./swagger/swaggerConfig')
 const logger = require('morgan');
+const cron = require("node-cron");
+const axios = require("axios");
 
 const authRoutes = require('./routes/auth/index');
 const contextRoutes = require('./routes/context/index');
@@ -15,6 +17,21 @@ const permissionRoutes = require('./routes/permission/index');
 
 
 const app = express();
+
+// Function to hit the API
+const hitApi = async () => {
+	try {
+		const response = await axios.get("https://canary-be.onrender.com/");
+		console.log("API Response:", response.data);
+	} catch (error) {
+		console.error("Error hitting API:", error.message);
+	}
+};
+
+cron.schedule("*/15 * * * *", () => {
+	console.log("Running cron job at:", new Date().toLocaleString());
+	hitApi();
+});
 
 app.use(logger('dev'));
 
